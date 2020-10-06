@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // to grab the input
 const submitButton = document.getElementById('submit-btn')
 // console.log(submitButton)
+const tasksList = document.querySelector('#tasks')
 
 submitButton.addEventListener('click', function(e) {
   const taskDescription = document.getElementById('new-task-description')
@@ -14,23 +15,32 @@ submitButton.addEventListener('click', function(e) {
 
   taskLi.innerHTML = `
   ${taskDescription.value}
-  <button>&times;</button>
+  <button onclick = "removeItem(this)">&times;</button>
+
   `
   
-  const tasksList = document.querySelector('#tasks')
   tasksList.append(taskLi)
 
   e.preventDefault()
 })
+function removeItem(el){
+// this.remove()
+// const element = el
+// console.dir(element)
+// // const taskList = document.getElementById('tasks')
+// element.remove()
 
-const allLis = document.querySelectorAll('li')
+el.parentNode.removeChild(el)
+}
 
-const deleteButtons = document.querySelectorAll('button')
+
+const deleteButtons = tasksList.querySelectorAll('button')
 
 for(const button of deleteButtons) {
   button.addEventListener('click', function(e){
     const button = e.target
     const parentLi = button.parentElement
+    // const allLis = document.querySelectorAll('li')
     console.log(parentLi)
     
   })
